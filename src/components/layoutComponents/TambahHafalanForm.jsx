@@ -292,14 +292,14 @@ export default function TambahHafalanForm({ santriList }) {
         showAlert(
           "error",
           "Gagal Menambahkan",
-          err.error || "Terjadi kesalahan saat menyimpan data"
+          err.error || "Terjadi kesalahan saat menyimpan data",
         );
       }
     } catch (e) {
       showAlert(
         "error",
         "Terjadi Kesalahan",
-        "Tidak dapat terhubung ke server"
+        "Tidak dapat terhubung ke server",
       );
     } finally {
       setLoading(false);
@@ -328,7 +328,7 @@ export default function TambahHafalanForm({ santriList }) {
       showAlert(
         "warning",
         "Data Tidak Lengkap",
-        "Mohon lengkapi semua field yang wajib diisi!"
+        "Mohon lengkapi semua field yang wajib diisi!",
       );
       return;
     }
@@ -372,7 +372,7 @@ export default function TambahHafalanForm({ santriList }) {
         showAlert(
           "success",
           "Berhasil Diupdate!",
-          "Data hafalan berhasil diperbarui"
+          "Data hafalan berhasil diperbarui",
         );
         setEditingId(null);
         fetchHafalan();
@@ -382,14 +382,14 @@ export default function TambahHafalanForm({ santriList }) {
         showAlert(
           "error",
           "Gagal Update",
-          err.error || "Tidak dapat memperbarui data"
+          err.error || "Tidak dapat memperbarui data",
         );
       }
     } catch {
       showAlert(
         "error",
         "Terjadi Kesalahan",
-        "Tidak dapat terhubung ke server"
+        "Tidak dapat terhubung ke server",
       );
     } finally {
       setLoading(false);
@@ -409,7 +409,7 @@ export default function TambahHafalanForm({ santriList }) {
         showAlert(
           "success",
           "Berhasil Dihapus!",
-          "Data hafalan berhasil dihapus"
+          "Data hafalan berhasil dihapus",
         );
         fetchHafalan();
         router.refresh();
@@ -420,7 +420,7 @@ export default function TambahHafalanForm({ santriList }) {
       showAlert(
         "error",
         "Terjadi Kesalahan",
-        "Tidak dapat terhubung ke server"
+        "Tidak dapat terhubung ke server",
       );
     } finally {
       setLoading(false);
@@ -446,10 +446,10 @@ export default function TambahHafalanForm({ santriList }) {
               alert.type === "success"
                 ? "bg-gradient-to-r from-green-50 to-emerald-50 border-green-200"
                 : alert.type === "error"
-                ? "bg-gradient-to-r from-red-50 to-rose-50 border-red-200"
-                : alert.type === "warning"
-                ? "bg-gradient-to-r from-yellow-50 to-amber-50 border-yellow-200"
-                : "bg-gradient-to-r from-blue-50 to-indigo-50 border-blue-200"
+                  ? "bg-gradient-to-r from-red-50 to-rose-50 border-red-200"
+                  : alert.type === "warning"
+                    ? "bg-gradient-to-r from-yellow-50 to-amber-50 border-yellow-200"
+                    : "bg-gradient-to-r from-blue-50 to-indigo-50 border-blue-200"
             }`}
           >
             <div className="p-4">
@@ -459,10 +459,10 @@ export default function TambahHafalanForm({ santriList }) {
                     alert.type === "success"
                       ? "bg-gradient-to-br from-green-500 to-emerald-600"
                       : alert.type === "error"
-                      ? "bg-gradient-to-br from-red-500 to-rose-600"
-                      : alert.type === "warning"
-                      ? "bg-gradient-to-br from-yellow-500 to-amber-600"
-                      : "bg-gradient-to-br from-blue-500 to-indigo-600"
+                        ? "bg-gradient-to-br from-red-500 to-rose-600"
+                        : alert.type === "warning"
+                          ? "bg-gradient-to-br from-yellow-500 to-amber-600"
+                          : "bg-gradient-to-br from-blue-500 to-indigo-600"
                   }`}
                 >
                   {alert.type === "success" && (
@@ -533,10 +533,10 @@ export default function TambahHafalanForm({ santriList }) {
                       alert.type === "success"
                         ? "text-green-900"
                         : alert.type === "error"
-                        ? "text-red-900"
-                        : alert.type === "warning"
-                        ? "text-yellow-900"
-                        : "text-blue-900"
+                          ? "text-red-900"
+                          : alert.type === "warning"
+                            ? "text-yellow-900"
+                            : "text-blue-900"
                     }`}
                   >
                     {alert.title}
@@ -546,10 +546,10 @@ export default function TambahHafalanForm({ santriList }) {
                       alert.type === "success"
                         ? "text-green-700"
                         : alert.type === "error"
-                        ? "text-red-700"
-                        : alert.type === "warning"
-                        ? "text-yellow-700"
-                        : "text-blue-700"
+                          ? "text-red-700"
+                          : alert.type === "warning"
+                            ? "text-yellow-700"
+                            : "text-blue-700"
                     }`}
                   >
                     {alert.message}
@@ -564,10 +564,10 @@ export default function TambahHafalanForm({ santriList }) {
                     alert.type === "success"
                       ? "text-green-700"
                       : alert.type === "error"
-                      ? "text-red-700"
-                      : alert.type === "warning"
-                      ? "text-yellow-700"
-                      : "text-blue-700"
+                        ? "text-red-700"
+                        : alert.type === "warning"
+                          ? "text-yellow-700"
+                          : "text-blue-700"
                   }`}
                 >
                   <svg
@@ -591,10 +591,10 @@ export default function TambahHafalanForm({ santriList }) {
                   alert.type === "success"
                     ? "bg-green-200"
                     : alert.type === "error"
-                    ? "bg-red-200"
-                    : alert.type === "warning"
-                    ? "bg-yellow-200"
-                    : "bg-blue-200"
+                      ? "bg-red-200"
+                      : alert.type === "warning"
+                        ? "bg-yellow-200"
+                        : "bg-blue-200"
                 }`}
               >
                 <div
@@ -602,10 +602,10 @@ export default function TambahHafalanForm({ santriList }) {
                     alert.type === "success"
                       ? "bg-gradient-to-r from-green-500 to-emerald-600"
                       : alert.type === "error"
-                      ? "bg-gradient-to-r from-red-500 to-rose-600"
-                      : alert.type === "warning"
-                      ? "bg-gradient-to-r from-yellow-500 to-amber-600"
-                      : "bg-gradient-to-r from-blue-500 to-indigo-600"
+                        ? "bg-gradient-to-r from-red-500 to-rose-600"
+                        : alert.type === "warning"
+                          ? "bg-gradient-to-r from-yellow-500 to-amber-600"
+                          : "bg-gradient-to-r from-blue-500 to-indigo-600"
                   }`}
                 ></div>
               </div>
@@ -618,7 +618,7 @@ export default function TambahHafalanForm({ santriList }) {
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
         <div>
           <h3 className="text-2xl font-bold text-gray-800">
-            Daftar Hafalan Santri
+            Daftar Hafalan Murid
           </h3>
           <p className="text-sm text-gray-500 mt-1">
             Kelola data hafalan santri Anda
