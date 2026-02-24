@@ -14,7 +14,7 @@ export async function POST(request) {
     if (!nama || !tanggal_lahir || !kelas || !walisantri_id || !guru_id) {
       return NextResponse.json(
         { error: "Semua field harus diisi!" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -25,8 +25,8 @@ export async function POST(request) {
 
     if (!wali) {
       return NextResponse.json(
-        { error: "Wali santri tidak ditemukan" },
-        { status: 404 }
+        { error: "Wali Murid tidak ditemukan" },
+        { status: 404 },
       );
     }
 
@@ -38,7 +38,7 @@ export async function POST(request) {
     if (!guru) {
       return NextResponse.json(
         { error: "Guru tidak ditemukan" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -57,13 +57,13 @@ export async function POST(request) {
 
     return NextResponse.json(
       { message: "Santri berhasil ditambahkan", data: newSantri },
-      { status: 201 }
+      { status: 201 },
     );
   } catch (error) {
     console.error("Error create santri:", error);
     return NextResponse.json(
       { error: "Terjadi kesalahan server" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -86,7 +86,7 @@ export async function GET() {
     console.error("Error get santri:", error);
     return NextResponse.json(
       { error: "Gagal mengambil data santri" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

@@ -92,7 +92,7 @@ export default function Sidebar({ children, session, isOpen }) {
             <div className="mb-8 mt-2">
               <h2 className="text-xl font-bold text-slate-900">
                 {session?.user?.role === "WALISANTRI"
-                  ? "Wali Santri Panel"
+                  ? "Wali Murid Panel"
                   : session?.user?.role === "ADMIN"
                     ? "Kordinator Panel"
                     : "Guru Panel"}
@@ -131,7 +131,7 @@ export default function Sidebar({ children, session, isOpen }) {
         <div className="flex justify-between items-center px-6 py-4 border-b">
           <h2 className="font-bold text-lg">
             {session?.user?.role === "WALISANTRI"
-              ? "Wali Santri Panel"
+              ? "Wali Murid Panel"
               : session?.user?.role === "ADMIN"
                 ? "Kordinator Panel"
                 : "Guru Panel"}

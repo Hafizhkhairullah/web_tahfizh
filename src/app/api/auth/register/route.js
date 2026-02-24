@@ -12,7 +12,7 @@ export async function POST(request) {
     if (!username || !password || !role || !nama) {
       return NextResponse.json(
         { error: "Data tidak lengkap" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -24,7 +24,7 @@ export async function POST(request) {
     if (existingUser) {
       return NextResponse.json(
         { error: "Username sudah digunakan" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -38,8 +38,8 @@ export async function POST(request) {
       // Validasi data walisantri
       if (!alamat || !no_hp) {
         return NextResponse.json(
-          { error: "Alamat dan nomor HP wajib diisi untuk Wali Santri" },
-          { status: 400 }
+          { error: "Alamat dan nomor HP wajib diisi untuk Wali Murid" },
+          { status: 400 },
         );
       }
 
@@ -66,7 +66,7 @@ export async function POST(request) {
       if (!nama) {
         return NextResponse.json(
           { error: "Nama wajib diisi untuk Guru" },
-          { status: 400 }
+          { status: 400 },
         );
       }
       newUser = await prisma.user.create({
@@ -105,13 +105,13 @@ export async function POST(request) {
         message: "Registrasi berhasil",
         user: userWithoutPassword,
       },
-      { status: 201 }
+      { status: 201 },
     );
   } catch (error) {
     console.error("Registration error:", error);
     return NextResponse.json(
       { error: "Terjadi kesalahan saat registrasi" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

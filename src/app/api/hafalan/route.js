@@ -34,7 +34,7 @@ export async function GET(request) {
       if (!guru_id) {
         return new Response(
           JSON.stringify({ error: "Data guru tidak ditemukan" }),
-          { status: 404, headers: { "Content-Type": "application/json" } }
+          { status: 404, headers: { "Content-Type": "application/json" } },
         );
       }
 
@@ -92,7 +92,7 @@ export async function GET(request) {
             santri,
             guru,
           };
-        })
+        }),
       );
     }
 
@@ -104,8 +104,8 @@ export async function GET(request) {
 
       if (!walisantri_id) {
         return new Response(
-          JSON.stringify({ error: "Data wali santri tidak ditemukan" }),
-          { status: 404, headers: { "Content-Type": "application/json" } }
+          JSON.stringify({ error: "Data wali murid tidak ditemukan" }),
+          { status: 404, headers: { "Content-Type": "application/json" } },
         );
       }
 
@@ -164,7 +164,7 @@ export async function GET(request) {
             santri,
             guru,
           };
-        })
+        }),
       );
     }
 
@@ -220,7 +220,7 @@ export async function GET(request) {
             santri,
             guru,
           };
-        })
+        }),
       );
     }
 
@@ -242,7 +242,7 @@ export async function GET(request) {
       {
         status: 200,
         headers: { "Content-Type": "application/json" },
-      }
+      },
     );
   } catch (error) {
     console.error("Error fetching hafalan:", error);
@@ -252,7 +252,7 @@ export async function GET(request) {
         detail:
           process.env.NODE_ENV === "development" ? error.message : undefined,
       }),
-      { status: 500, headers: { "Content-Type": "application/json" } }
+      { status: 500, headers: { "Content-Type": "application/json" } },
     );
   }
 }
@@ -293,7 +293,7 @@ export async function POST(request) {
     if (!santri_id || !status || !tanggal || !jenis) {
       return new Response(
         JSON.stringify({ error: "Field wajib belum lengkap" }),
-        { status: 400, headers: { "Content-Type": "application/json" } }
+        { status: 400, headers: { "Content-Type": "application/json" } },
       );
     }
 
@@ -304,7 +304,7 @@ export async function POST(request) {
     if (!santriExists) {
       return new Response(
         JSON.stringify({ error: "Data santri tidak ditemukan" }),
-        { status: 404, headers: { "Content-Type": "application/json" } }
+        { status: 404, headers: { "Content-Type": "application/json" } },
       );
     }
 
@@ -318,7 +318,7 @@ export async function POST(request) {
         JSON.stringify({
           error: "Santri ini sudah ada dalam list hafalan",
         }),
-        { status: 409, headers: { "Content-Type": "application/json" } }
+        { status: 409, headers: { "Content-Type": "application/json" } },
       );
     }
 
@@ -368,7 +368,7 @@ export async function POST(request) {
         detail:
           process.env.NODE_ENV === "development" ? error.message : undefined,
       }),
-      { status: 500, headers: { "Content-Type": "application/json" } }
+      { status: 500, headers: { "Content-Type": "application/json" } },
     );
   }
 }

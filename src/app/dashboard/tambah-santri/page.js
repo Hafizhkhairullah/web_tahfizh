@@ -30,11 +30,10 @@ export default function TambahSantri() {
       try {
         const res = await fetch("/api/walisantri");
         const data = await res.json();
-        console.log("Wali Santri Data:", data);
         if (res.ok) {
           setWalisantris(data.data || []);
         } else {
-          console.error("Gagal mengambil data wali santri");
+          console.error("Gagal mengambil data wali murid");
         }
       } catch (error) {
         console.error(error);
@@ -67,7 +66,7 @@ export default function TambahSantri() {
 
   const handleSubmit = async () => {
     if (!santriData.walisantri_id) {
-      setMessage({ type: "error", text: "Silakan pilih wali santri" });
+      setMessage({ type: "error", text: "Silakan pilih wali murid" });
       return;
     }
 
@@ -284,7 +283,7 @@ export default function TambahSantri() {
               {/* Wali Santri */}
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-3">
-                  Wali Santri <span className="text-red-500">*</span>
+                  Wali Murid <span className="text-red-500">*</span>
                 </label>
                 <div className="relative group">
                   <Users className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 group-focus-within:text-emerald-600 transition-colors z-10" />
@@ -295,7 +294,7 @@ export default function TambahSantri() {
                     required
                     className="w-full pl-12 pr-10 py-3.5 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-emerald-500 focus:bg-emerald-50/30 transition-all appearance-none bg-white"
                   >
-                    <option value="">Pilih Wali Santri</option>
+                    <option value="">Pilih Wali Murid</option>
                     {walisantris.map((w) => (
                       <option key={w.id} value={w.id}>
                         {w.nama} - {w.no_hp}

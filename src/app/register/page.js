@@ -168,7 +168,7 @@ export default function RegisterPage() {
                       }`}
                     >
                       {role === "WALISANTRI"
-                        ? "Wali Santri"
+                        ? "Wali Murid"
                         : role.charAt(0) + role.slice(1).toLowerCase()}
                     </button>
                   ))}
