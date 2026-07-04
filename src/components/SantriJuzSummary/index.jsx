@@ -202,8 +202,8 @@ const SantriJuzSummary = ({ initialData, role, userId }) => {
             <AlertCircle className="w-5 h-5 text-yellow-600 flex-shrink-0 mt-0.5" />
             <div>
               <p className="font-semibold text-yellow-800 mb-1">
-                Perhatian: Belum Ada santri yang Memiliki Progress Hafalan 1 Juz
-                atau Lebih
+                Perhatian: Belum Ada siswa/i yang Memiliki Progress Hafalan 1
+                Juz atau Lebih
               </p>
               <p className="text-sm text-yellow-700">
                 Semua siswa/i akan tercatat dengan status <strong>LULUS</strong>{" "}
@@ -292,8 +292,8 @@ const SantriJuzSummary = ({ initialData, role, userId }) => {
                       <BookOpen className="w-12 h-12 mx-auto mb-3 text-gray-400" />
                       <p>
                         {searchTerm || filterKelas !== "ALL"
-                          ? "Tidak ada santri yang sesuai dengan filter"
-                          : "Tidak ada data santri"}
+                          ? "Tidak ada siswa/i yang sesuai dengan filter"
+                          : "Tidak ada data siswa/i"}
                       </p>
                     </td>
                   </tr>
@@ -402,7 +402,7 @@ const SantriJuzSummary = ({ initialData, role, userId }) => {
 
         {/* Footer Info */}
         <div className="mt-6 text-center text-sm text-gray-600">
-          Menampilkan {filteredSantri.length} dari {santriList.length} santri
+          Menampilkan {filteredSantri.length} dari {santriList.length} Siswa/i
         </div>
       </div>
     </div>
