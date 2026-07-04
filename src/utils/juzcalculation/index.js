@@ -605,7 +605,7 @@ export const calculateJuzProgressEnhanced = (hafalanList) => {
       completedPages: new Set(),
       hafalanList: [],
       percentage: 0,
-      isComplete: false,
+      isComplete: false, 
     };
   });
 
