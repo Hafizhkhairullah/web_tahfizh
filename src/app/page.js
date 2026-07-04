@@ -84,7 +84,7 @@ const DashboardHafalan = ({ role, userId }) => {
     .sort(
       (a, b) =>
         new Date(b.hafalanTerakhir.tanggal) -
-        new Date(a.hafalanTerakhir.tanggal)
+        new Date(a.hafalanTerakhir.tanggal),
     )
     .slice(0, 5);
 
@@ -97,7 +97,7 @@ const DashboardHafalan = ({ role, userId }) => {
             Dashboard Hafalan Al-Qur'an
           </h1>
           <p className="text-gray-600">
-            Pantau progress dan perkembangan hafalan santri secara real-time
+            Pantau progress dan perkembangan hafalan siswa/i secara real-time
           </p>
         </div>
 
@@ -113,13 +113,13 @@ const DashboardHafalan = ({ role, userId }) => {
                 <p className="text-3xl font-bold text-gray-800">
                   {stats.totalSantri || 0}
                 </p>
-                <p className="text-sm text-gray-500">Total Santri</p>
+                <p className="text-sm text-gray-500">Total Siswa/i</p>
               </div>
             </div>
             <div className="flex items-center justify-between text-sm">
               <span className="text-gray-600">Aktif menghafal</span>
               <span className="font-semibold text-blue-600">
-                {stats.santriProgress || 0} santri
+                {stats.santriProgress || 0} siswa/i
               </span>
             </div>
           </div>
@@ -134,7 +134,7 @@ const DashboardHafalan = ({ role, userId }) => {
                 <p className="text-3xl font-bold text-gray-800">
                   {stats.santriKhatam || 0}
                 </p>
-                <p className="text-sm text-gray-500">Santri Khatam</p>
+                <p className="text-sm text-gray-500">Siswa/i Khatam</p>
               </div>
             </div>
             <div className="flex items-center justify-between text-sm">
@@ -195,7 +195,7 @@ const DashboardHafalan = ({ role, userId }) => {
             <div className="flex items-center gap-3 mb-6">
               <Star className="w-6 h-6 text-yellow-500" />
               <h2 className="text-xl font-bold text-gray-800">
-                Top 5 Santri Berprestasi
+                Top 5 Siswa/i Berprestasi
               </h2>
             </div>
             <div className="space-y-3">
@@ -211,10 +211,10 @@ const DashboardHafalan = ({ role, userId }) => {
                           index === 0
                             ? "bg-gradient-to-br from-yellow-400 to-yellow-600"
                             : index === 1
-                            ? "bg-gradient-to-br from-gray-300 to-gray-500"
-                            : index === 2
-                            ? "bg-gradient-to-br from-orange-400 to-orange-600"
-                            : "bg-gradient-to-br from-blue-400 to-blue-600"
+                              ? "bg-gradient-to-br from-gray-300 to-gray-500"
+                              : index === 2
+                                ? "bg-gradient-to-br from-orange-400 to-orange-600"
+                                : "bg-gradient-to-br from-blue-400 to-blue-600"
                         }`}
                       >
                         {index + 1}
@@ -270,7 +270,7 @@ const DashboardHafalan = ({ role, userId }) => {
                       </p>
                       <p className="text-xs text-gray-500 mt-1">
                         {new Date(
-                          santri.hafalanTerakhir?.tanggal
+                          santri.hafalanTerakhir?.tanggal,
                         ).toLocaleDateString("id-ID", {
                           day: "numeric",
                           month: "short",
@@ -363,8 +363,8 @@ const DashboardHafalan = ({ role, userId }) => {
             className="flex-1 min-w-[280px] p-6 bg-gradient-to-br from-emerald-500 to-teal-600 text-white rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1"
           >
             <BarChart3 className="w-8 h-8 mb-3" />
-            <h3 className="text-lg font-bold mb-2">Lihat Semua Santri</h3>
-            <p className="text-sm opacity-90">Detail progress setiap santri</p>
+            <h3 className="text-lg font-bold mb-2">Lihat Semua Siswa/i</h3>
+            <p className="text-sm opacity-90">Detail progress setiap siswa/i</p>
           </button>
 
           {role === "GURU" && (
@@ -374,7 +374,7 @@ const DashboardHafalan = ({ role, userId }) => {
             >
               <BookOpen className="w-8 h-8 mb-3" />
               <h3 className="text-lg font-bold mb-2">Input Hafalan</h3>
-              <p className="text-sm opacity-90">Tambah hafalan santri baru</p>
+              <p className="text-sm opacity-90">Tambah hafalan siswa/i baru</p>
             </button>
           )}
 

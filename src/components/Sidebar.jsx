@@ -46,7 +46,7 @@ export default function Sidebar({ children, session, isOpen }) {
   const menuAdmin = [
     { name: "Dashboard", icon: LayoutDashboard, href: "/", last: true },
     {
-      name: "Tambah Santri",
+      name: "Tambah Siswa/i",
       icon: UserPlus,
       href: "/dashboard/tambah-santri",
       last: true,

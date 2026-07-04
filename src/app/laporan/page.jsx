@@ -440,7 +440,7 @@ const LaporanPDF = ({ role, userId }) => {
           {selectedReport === "achievement" && (
             <div className="space-y-4">
               <h3 className="font-semibold text-gray-800 mb-4">
-                Top 5 Santri Berprestasi
+                Top 5 Siswa/i Berprestasi
               </h3>
               {stats.topSantri?.map((santri, index) => (
                 <div
@@ -453,10 +453,10 @@ const LaporanPDF = ({ role, userId }) => {
                         index === 0
                           ? "bg-yellow-500"
                           : index === 1
-                          ? "bg-gray-400"
-                          : index === 2
-                          ? "bg-orange-600"
-                          : "bg-blue-500"
+                            ? "bg-gray-400"
+                            : index === 2
+                              ? "bg-orange-600"
+                              : "bg-blue-500"
                       }`}
                     >
                       {index + 1}
