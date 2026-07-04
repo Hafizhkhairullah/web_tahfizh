@@ -82,33 +82,60 @@ export default function RegisterPage() {
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSuccessMessage("");
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  setSuccessMessage("");
 
-    const newErrors = validateForm();
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
+  const newErrors = validateForm();
+  if (Object.keys(newErrors).length > 0) {
+    setErrors(newErrors);
+    return;
+  }
+
+  setLoading(true);
+
+  try {
+    const res = await fetch("/api/auth/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: formData.username,
+        password: formData.password,
+        role: formData.role,
+        nama: formData.nama,
+        alamat: formData.alamat,
+        no_hp: formData.no_hp,
+      }),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      setErrors({ form: data.error || "Terjadi kesalahan" });
       return;
     }
 
-    setLoading(true);
+    // SUCCESS
+    setFormData({
+      username: "",
+      password: "",
+      confirmPassword: "",
+      role: "WALISANTRI",
+      nama: "",
+      alamat: "",
+      no_hp: "",
+    });
 
-    // Simulate API call
-    setTimeout(() => {
-      setFormData({
-        username: "",
-        password: "",
-        confirmPassword: "",
-        role: "WALISANTRI",
-        nama: "",
-        alamat: "",
-        no_hp: "",
-      });
-      setSuccessMessage("User Berhasil Ditambahkan!");
-      setLoading(false);
-    }, 1500);
-  };
+    setSuccessMessage(data.message || "User berhasil dibuat!");
+  } catch (error) {
+    console.error(error);
+    setErrors({ form: "Gagal terhubung ke server" });
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center p-4 ">

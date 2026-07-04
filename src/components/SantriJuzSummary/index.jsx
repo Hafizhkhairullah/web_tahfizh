@@ -126,20 +126,21 @@ const SantriJuzSummary = ({ initialData, role, userId }) => {
           <div className="bg-white rounded-2xl shadow-xl p-8 mb-6 border-t-4 border-emerald-500">
             <h1 className="text-3xl font-bold text-gray-800 mb-2 flex items-center gap-3">
               <Users className="w-8 h-8 text-emerald-600" />
-              Ringkasan Progress Hafalan Santri
+              Ringkasan Progress Hafalan Siswa/i
             </h1>
             <p className="text-gray-600">
-              Pantau perkembangan hafalan seluruh santri
+              Pantau perkembangan hafalan seluruh siswa/i Anda. Data akan muncul
+              setelah siswa/i terdaftar dan memiliki progress hafalan.
             </p>
           </div>
 
           <div className="bg-white rounded-2xl shadow-xl p-12 text-center">
             <BookOpen className="w-20 h-20 text-gray-400 mx-auto mb-4" />
             <h3 className="text-xl font-semibold text-gray-700 mb-2">
-              Tidak Ada Data Santri
+              Tidak Ada Data Siswa/i
             </h3>
             <p className="text-gray-500">
-              Belum ada santri yang terdaftar untuk akun Anda
+              Belum ada siswa/i yang terdaftar untuk akun Anda
             </p>
           </div>
         </div>
@@ -154,10 +155,10 @@ const SantriJuzSummary = ({ initialData, role, userId }) => {
         <div className="bg-white rounded-2xl shadow-xl p-8 mb-6 border-t-4 border-emerald-500">
           <h1 className="text-3xl font-bold text-gray-800 mb-2 flex items-center gap-3">
             <Users className="w-8 h-8 text-emerald-600" />
-            Ringkasan Progress Hafalan Santri
+            Ringkasan Progress Hafalan Siswa/i
           </h1>
           <p className="text-gray-600">
-            Pantau perkembangan hafalan seluruh santri
+            Pantau perkembangan hafalan seluruh siswa/i
           </p>
         </div>
 
@@ -166,13 +167,13 @@ const SantriJuzSummary = ({ initialData, role, userId }) => {
           <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl shadow-lg p-6 text-white">
             <Users className="w-8 h-8 mb-3 opacity-80" />
             <div className="text-3xl font-bold mb-1">{stats.totalSantri}</div>
-            <div className="text-sm opacity-90">Total Santri</div>
+            <div className="text-sm opacity-90">Total Siswa/i</div>
           </div>
 
           <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl shadow-lg p-6 text-white">
             <Trophy className="w-8 h-8 mb-3 opacity-80" />
             <div className="text-3xl font-bold mb-1">{stats.santriKhatam}</div>
-            <div className="text-sm opacity-90">Santri Khatam</div>
+            <div className="text-sm opacity-90">Siswa/i Khatam</div>
             {stats.totalSantri > 0 && (
               <div className="text-xs opacity-75 mt-1">
                 ({stats.persenKhatam}%)
@@ -183,7 +184,7 @@ const SantriJuzSummary = ({ initialData, role, userId }) => {
           <div className="bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl shadow-lg p-6 text-white">
             <BookOpen className="w-8 h-8 mb-3 opacity-80" />
             <div className="text-3xl font-bold mb-1">{stats.rataRataJuz}</div>
-            <div className="text-sm opacity-90">Rata-rata Juz/Santri</div>
+            <div className="text-sm opacity-90">Rata-rata Juz/(Siswa/i)</div>
           </div>
 
           <div className="bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl shadow-lg p-6 text-white">
@@ -205,7 +206,7 @@ const SantriJuzSummary = ({ initialData, role, userId }) => {
                 atau Lebih
               </p>
               <p className="text-sm text-yellow-700">
-                Semua santri akan tercatat dengan status <strong>LULUS</strong>{" "}
+                Semua siswa/i akan tercatat dengan status <strong>LULUS</strong>{" "}
                 dan jenis <strong>ZIYADAH</strong>. Data akan tercatat secara
                 otomatis saat hafalan selesai.
               </p>
@@ -256,7 +257,7 @@ const SantriJuzSummary = ({ initialData, role, userId }) => {
                     No
                   </th>
                   <th className="px-6 py-4 text-left text-sm font-semibold">
-                    Nama Santri
+                    Nama Siswa/i
                   </th>
                   <th className="px-6 py-4 text-left text-sm font-semibold">
                     Kelas
@@ -328,10 +329,10 @@ const SantriJuzSummary = ({ initialData, role, userId }) => {
                               santri.juzSelesai === 30
                                 ? "text-green-600"
                                 : santri.juzSelesai >= 15
-                                ? "text-blue-600"
-                                : santri.juzSelesai >= 5
-                                ? "text-yellow-600"
-                                : "text-gray-600"
+                                  ? "text-blue-600"
+                                  : santri.juzSelesai >= 5
+                                    ? "text-yellow-600"
+                                    : "text-gray-600"
                             }`}
                           >
                             {santri.juzSelesai}
@@ -350,10 +351,10 @@ const SantriJuzSummary = ({ initialData, role, userId }) => {
                                 santri.persenTotal === 100
                                   ? "bg-green-500"
                                   : santri.persenTotal >= 70
-                                  ? "bg-blue-500"
-                                  : santri.persenTotal >= 40
-                                  ? "bg-yellow-500"
-                                  : "bg-red-500"
+                                    ? "bg-blue-500"
+                                    : santri.persenTotal >= 40
+                                      ? "bg-yellow-500"
+                                      : "bg-red-500"
                               }`}
                               style={{ width: `${santri.persenTotal}%` }}
                             ></div>
@@ -372,7 +373,7 @@ const SantriJuzSummary = ({ initialData, role, userId }) => {
                       <td className="px-6 py-4 text-center text-sm text-gray-600">
                         {santri.hafalanTerakhir
                           ? new Date(
-                              santri.hafalanTerakhir.tanggal
+                              santri.hafalanTerakhir.tanggal,
                             ).toLocaleDateString("id-ID", {
                               day: "2-digit",
                               month: "short",

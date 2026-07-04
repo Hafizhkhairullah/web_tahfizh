@@ -23,7 +23,7 @@ const HafalanTable = ({
           <thead className="bg-gradient-to-r from-gray-50 to-gray-100">
             <tr>
               <th className="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
-                Santri
+                Siswa/i
               </th>
               <th className="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
                 Tanggal
@@ -324,8 +324,8 @@ const HafalanTable = ({
                             h.jenis === "ZIYADAH"
                               ? "bg-blue-100 text-blue-800"
                               : h.jenis === "MUROJA"
-                              ? "bg-purple-100 text-purple-800"
-                              : "bg-amber-100 text-amber-800"
+                                ? "bg-purple-100 text-purple-800"
+                                : "bg-amber-100 text-amber-800"
                           }`}
                         >
                           {h.jenis}
@@ -350,8 +350,8 @@ const HafalanTable = ({
                             h.status === "LULUS"
                               ? "bg-green-100 text-green-800"
                               : h.status === "MENGULANG"
-                              ? "bg-yellow-100 text-yellow-800"
-                              : "bg-gray-100 text-gray-800"
+                                ? "bg-yellow-100 text-yellow-800"
+                                : "bg-gray-100 text-gray-800"
                           }`}
                         >
                           {h.status}

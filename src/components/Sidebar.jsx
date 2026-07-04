@@ -52,12 +52,7 @@ export default function Sidebar({ children, session, isOpen }) {
       last: true,
     },
     { name: "Tambah Akun", icon: UserPlus, href: "/register", last: true },
-    {
-      name: "Progress Hafalan",
-      icon: BookCheck,
-      href: "/summary",
-      last: false,
-    },
+  
   ];
 
   const getMenuByRole = () => {

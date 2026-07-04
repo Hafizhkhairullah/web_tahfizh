@@ -133,7 +133,7 @@ function ChildProgressCard({ child }) {
                 day: "numeric",
                 month: "long",
                 year: "numeric",
-              }
+              },
             )}
           </p>
         </div>
@@ -272,7 +272,7 @@ export default function WalisantriDashboard() {
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-800 mb-2">
-            Dashboard Walisantri
+            Dashboard Walimurid
           </h1>
           <p className="text-gray-600">
             Selamat datang, {session?.user?.name} • Pantau perkembangan hafalan
@@ -286,7 +286,7 @@ export default function WalisantriDashboard() {
             icon={<Users className="w-6 h-6" />}
             title="Total Anak"
             value={data.statistics.totalAnak}
-            subtitle="Santri terdaftar"
+            subtitle="Siswa/i terdaftar"
             color="blue"
           />
           <StatCard

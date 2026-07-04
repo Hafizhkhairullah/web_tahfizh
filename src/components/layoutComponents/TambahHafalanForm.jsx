@@ -618,10 +618,10 @@ export default function TambahHafalanForm({ santriList }) {
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
         <div>
           <h3 className="text-2xl font-bold text-gray-800">
-            Daftar Hafalan Murid
+            Daftar Hafalan Siswa/i
           </h3>
           <p className="text-sm text-gray-500 mt-1">
-            Kelola data hafalan santri Anda
+            Kelola data hafalan siswa/i Anda
           </p>
         </div>
         <button
@@ -677,7 +677,7 @@ export default function TambahHafalanForm({ santriList }) {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3 bg-gray-100 p-4 rounded-lg border">
         <input
           type="text"
-          placeholder="🔍 Cari nama santri / surah..."
+          placeholder="🔍 Cari nama siswa/i / surah..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           className="border px-3 py-2 rounded focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
@@ -763,7 +763,7 @@ export default function TambahHafalanForm({ santriList }) {
                     d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
                   />
                 </svg>
-                Santri *
+                Siswa/i *
               </label>
               <select
                 value={newHafalan.santri_id}
@@ -772,7 +772,7 @@ export default function TambahHafalanForm({ santriList }) {
                 }
                 className="w-full border-2 border-gray-300 px-3 py-2.5 rounded-xl text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none bg-white"
               >
-                <option value="">Pilih Santri</option>
+                <option value="">Pilih Siswa/i</option>
                 {santriList.map((s) => (
                   <option key={s.id} value={s.id}>
                     {s.nama} - Kelas {s.kelas}
