@@ -117,10 +117,10 @@ export default function TambahSantri() {
                 <GraduationCap className="w-8 h-8 text-white" />
               </div>
               <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">
-                Tambah Data Santri
+                Tambah Data Siswa/i Baru
               </h1>
               <p className="text-emerald-100 text-lg">
-                Isi data santri dan pilih wali santri yang sudah terdaftar
+                Isi data siswa/i dan pilih wali siswa/i yang sudah terdaftar
               </p>
             </div>
           </div>
@@ -158,7 +158,7 @@ export default function TambahSantri() {
               {/* Nama Santri */}
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-3">
-                  Nama Santri <span className="text-red-500">*</span>
+                  Nama Siswa/i <span className="text-red-500">*</span>
                 </label>
                 <div className="relative group">
                   <User className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 group-focus-within:text-emerald-600 transition-colors" />
@@ -167,7 +167,7 @@ export default function TambahSantri() {
                     name="nama"
                     value={santriData.nama}
                     onChange={handleChange}
-                    placeholder="Masukkan nama lengkap santri"
+                    placeholder="Masukkan nama lengkap siswa/i"
                     required
                     className="w-full pl-12 pr-4 py-3.5 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-emerald-500 focus:bg-emerald-50/30 transition-all"
                   />
@@ -326,7 +326,7 @@ export default function TambahSantri() {
                   <div className="text-sm text-blue-800">
                     <p className="font-semibold mb-1">Informasi Penting</p>
                     <p className="text-blue-700">
-                      Pastikan semua data santri sudah benar sebelum menyimpan.
+                      Pastikan semua data siswa/i sudah benar sebelum menyimpan.
                       {/* Data yang sudah tersimpan dapat diubah melalui menu edit
                       santri. */}
                     </p>
@@ -348,7 +348,7 @@ export default function TambahSantri() {
                 ) : (
                   <>
                     <CheckCircle2 className="w-5 h-5" />
-                    <span>Simpan Data Santri</span>
+                    <span>Simpan Data Siswa/i</span>
                   </>
                 )}
               </button>

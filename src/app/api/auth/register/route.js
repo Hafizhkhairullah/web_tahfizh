@@ -85,6 +85,7 @@ export async function POST(request) {
         },
       });
     } else if (role === "ADMIN") {
+      // console.log("Registering admin with username:", username);
       newUser = await prisma.user.create({
         data: {
           username,
@@ -92,6 +93,8 @@ export async function POST(request) {
           role: "ADMIN",
         },
       });
+
+      console.log("Admin user created:", newUser);
     } else {
       return NextResponse.json({ error: "Role tidak valid" }, { status: 400 });
     }

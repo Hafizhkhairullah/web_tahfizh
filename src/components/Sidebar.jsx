@@ -46,18 +46,13 @@ export default function Sidebar({ children, session, isOpen }) {
   const menuAdmin = [
     { name: "Dashboard", icon: LayoutDashboard, href: "/", last: true },
     {
-      name: "Tambah Santri",
+      name: "Tambah Siswa/i",
       icon: UserPlus,
       href: "/dashboard/tambah-santri",
       last: true,
     },
     { name: "Tambah Akun", icon: UserPlus, href: "/register", last: true },
-    {
-      name: "Progress Hafalan",
-      icon: BookCheck,
-      href: "/summary",
-      last: false,
-    },
+  
   ];
 
   const getMenuByRole = () => {
