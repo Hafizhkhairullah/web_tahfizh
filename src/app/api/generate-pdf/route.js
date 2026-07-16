@@ -68,10 +68,10 @@ export async function GET(request) {
     // Calculate statistics
     const totalSantri = santriWithProgress.length;
     const santriKhatam = santriWithProgress.filter(
-      (s) => s.juzSelesai === 30
+      (s) => s.juzSelesai === 5,
     ).length;
     const santriProgress = santriWithProgress.filter(
-      (s) => s.juzSelesai < 30 && s.juzSelesai > 0
+      (s) => s.juzSelesai < 5 && s.juzSelesai > 0,
     ).length;
     const avgJuzPerSantri =
       totalSantri > 0
@@ -82,11 +82,11 @@ export async function GET(request) {
         : 0;
     const totalJuzDiselesaikan = santriWithProgress.reduce(
       (sum, s) => sum + s.juzSelesai,
-      0
+      0,
     );
     const totalHalamanDihafal = santriWithProgress.reduce(
       (sum, s) => sum + s.totalHalaman,
-      0
+      0,
     );
 
     const topSantri = [...santriWithProgress]
@@ -128,7 +128,7 @@ export async function GET(request) {
         message: "Terjadi kesalahan saat membuat PDF",
         error: error.message,
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -168,7 +168,7 @@ function generatePDFHTML(reportType, data) {
           <h2>Distribusi Progress</h2>
           <table>
             <tr>
-              <td>Santri Khatam (30 Juz)</td>
+              <td>Santri Khatam (5 Juz)</td>
               <td class="text-right"><strong>${statistics.santriKhatam}</strong></td>
             </tr>
             <tr>
@@ -211,13 +211,13 @@ function generatePDFHTML(reportType, data) {
                   <td>${s.guru}</td>
                   <td class="text-center"><strong>${
                     s.juzSelesai
-                  }/30</strong></td>
+                  }/5</strong></td>
                   <td class="text-center"><strong class="green">${
                     s.persenTotal
                   }%</strong></td>
                   <td class="text-center">${s.totalHalaman}</td>
                 </tr>
-              `
+              `,
                 )
                 .join("")}
             </tbody>
@@ -233,7 +233,7 @@ function generatePDFHTML(reportType, data) {
           <div class="progress-section">
             <div class="progress-item">
               <div class="progress-label">
-                <span>Santri Khatam (30 Juz)</span>
+                <span>Santri Khatam (5 Juz)</span>
                 <strong>${statistics.santriKhatam} santri</strong>
               </div>
               <div class="progress-bar">
@@ -244,7 +244,7 @@ function generatePDFHTML(reportType, data) {
             </div>
             <div class="progress-item">
               <div class="progress-label">
-                <span>Sedang Progress (1-29 Juz)</span>
+                <span>Sedang Progress (1-4 Juz)</span>
                 <strong>${statistics.santriProgress} santri</strong>
               </div>
               <div class="progress-bar">
@@ -272,14 +272,14 @@ function generatePDFHTML(reportType, data) {
             <tr>
               <td>Rata-rata Halaman per Santri</td>
               <td class="text-right"><strong>${Math.round(
-                statistics.totalHalamanDihafal / statistics.totalSantri
+                statistics.totalHalamanDihafal / statistics.totalSantri,
               )} halaman</strong></td>
             </tr>
             <tr>
               <td>Persentase Progress Keseluruhan</td>
               <td class="text-right"><strong class="green">${(
                 (statistics.totalJuzDiselesaikan /
-                  (statistics.totalSantri * 30)) *
+                  (statistics.totalSantri * 5)) *
                 100
               ).toFixed(1)}%</strong></td>
             </tr>
@@ -312,10 +312,10 @@ function generatePDFHTML(reportType, data) {
                       i === 0
                         ? "gold"
                         : i === 1
-                        ? "silver"
-                        : i === 2
-                        ? "bronze"
-                        : ""
+                          ? "silver"
+                          : i === 2
+                            ? "bronze"
+                            : ""
                     }">
                       ${i + 1}
                     </div>
@@ -324,12 +324,12 @@ function generatePDFHTML(reportType, data) {
                   <td>${s.kelas}</td>
                   <td class="text-center"><strong>${
                     s.juzSelesai
-                  }/30</strong></td>
+                  }/5</strong></td>
                   <td class="text-center"><strong class="green">${
                     s.persenTotal
                   }%</strong></td>
                 </tr>
-              `
+              `,
                 )
                 .join("")}
             </tbody>
@@ -542,10 +542,10 @@ function generatePDFHTML(reportType, data) {
             reportType === "summary"
               ? "Laporan Ringkasan"
               : reportType === "detail"
-              ? "Laporan Detail Santri"
-              : reportType === "progress"
-              ? "Laporan Progress"
-              : "Laporan Prestasi"
+                ? "Laporan Detail Santri"
+                : reportType === "progress"
+                  ? "Laporan Progress"
+                  : "Laporan Prestasi"
           }
         </div>
         <div>
@@ -558,7 +558,7 @@ function generatePDFHTML(reportType, data) {
           ? `
       <div class="info-row">
         <div><strong>Periode:</strong> ${new Date(startDate).toLocaleDateString(
-          "id-ID"
+          "id-ID",
         )} - ${new Date(endDate).toLocaleDateString("id-ID")}</div>
       </div>
       `

@@ -34,7 +34,7 @@ export async function GET(req, { params }) {
             success: false,
             message: "Guru ID tidak ditemukan",
           },
-          { status: 400 }
+          { status: 400 },
         );
       }
       whereClause = {
@@ -52,7 +52,7 @@ export async function GET(req, { params }) {
           success: false,
           message: "Unauthorized role",
         },
-        { status: 403 }
+        { status: 403 },
       );
     }
 
@@ -86,7 +86,7 @@ export async function GET(req, { params }) {
           console.log(
             `      ${i + 1}. ${h.surah} (Hal ${h.halaman_awal}-${
               h.halaman_akhir || h.halaman_awal
-            })`
+            })`,
           );
         });
       } else {
@@ -168,32 +168,32 @@ export async function GET(req, { params }) {
         : 0;
 
     const santriKhatam = santriWithProgress.filter(
-      (s) => s.juzSelesai === 30
+      (s) => s.juzSelesai === 5,
     ).length;
 
     const santriProgress = santriWithProgress.filter(
-      (s) => s.juzSelesai < 30 && s.juzSelesai > 0
+      (s) => s.juzSelesai < 5 && s.juzSelesai > 0,
     ).length;
 
     const santriBelumMulai = santriWithProgress.filter(
-      (s) => s.juzSelesai === 0 && s.juzProgress === 0
+      (s) => s.juzSelesai === 0 && s.juzProgress === 0,
     ).length;
 
     const totalJuzDiselesaikan = santriWithProgress.reduce(
       (sum, s) => sum + s.juzSelesai,
-      0
+      0,
     );
 
     const totalHalamanDihafal = santriWithProgress.reduce(
       (sum, s) => sum + s.totalHalaman,
-      0
+      0,
     );
 
     // Distribusi juz
     const juzDistribution = {};
-    for (let i = 0; i <= 30; i++) {
+    for (let i = 0; i <= 5; i++) {
       juzDistribution[i] = santriWithProgress.filter(
-        (s) => s.juzTerakhir === i
+        (s) => s.juzTerakhir === i,
       ).length;
     }
 
@@ -259,7 +259,7 @@ export async function GET(req, { params }) {
         message: "Terjadi kesalahan server",
         error: error.message,
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

@@ -93,7 +93,7 @@ const JuzProgressCard = ({ juzProgress }) => {
             <p className="text-sm opacity-90">Juz Selesai</p>
           </div>
           <p className="text-3xl font-bold">{summary.completedJuz}</p>
-          <p className="text-xs opacity-75">dari 30 juz</p>
+          <p className="text-xs opacity-75">dari 5 juz</p>
         </div>
 
         <div className="bg-white/20 backdrop-blur-sm rounded-lg p-4">
@@ -111,7 +111,7 @@ const JuzProgressCard = ({ juzProgress }) => {
             <p className="text-sm opacity-90">Total Halaman</p>
           </div>
           <p className="text-3xl font-bold">{summary.totalHalamanDihafal}</p>
-          <p className="text-xs opacity-75">dari 604 halaman</p>
+          <p className="text-xs opacity-75">dari 104 halaman</p>
         </div>
 
         <div className="bg-white/20 backdrop-blur-sm rounded-lg p-4">
@@ -201,8 +201,8 @@ const HafalanCard = ({ hafalan }) => (
         hafalan.status === "LULUS"
           ? "bg-green-500"
           : hafalan.status === "MENGULANG"
-          ? "bg-yellow-500"
-          : "bg-gray-400"
+            ? "bg-yellow-500"
+            : "bg-gray-400"
       }`}
     />
 
@@ -237,8 +237,8 @@ const HafalanCard = ({ hafalan }) => (
             hafalan.status === "LULUS"
               ? "bg-green-100 text-green-700"
               : hafalan.status === "MENGULANG"
-              ? "bg-yellow-100 text-yellow-700"
-              : "bg-gray-100 text-gray-700"
+                ? "bg-yellow-100 text-yellow-700"
+                : "bg-gray-100 text-gray-700"
           }`}
         >
           {hafalan.status}
@@ -298,8 +298,8 @@ const HafalanCard = ({ hafalan }) => (
                         h.status === "LULUS"
                           ? "bg-green-100 text-green-700"
                           : h.status === "MENGULANG"
-                          ? "bg-yellow-100 text-yellow-700"
-                          : "bg-gray-100 text-gray-700"
+                            ? "bg-yellow-100 text-yellow-700"
+                            : "bg-gray-100 text-gray-700"
                       }`}
                     >
                       {h.status}
@@ -360,7 +360,7 @@ export default function WalisantriDashboard({ initialData }) {
         const startIndex = (currentPage - 1) * itemsPerPage;
         const currentHafalan = santri.hafalan.slice(
           startIndex,
-          startIndex + itemsPerPage
+          startIndex + itemsPerPage,
         );
 
         return (

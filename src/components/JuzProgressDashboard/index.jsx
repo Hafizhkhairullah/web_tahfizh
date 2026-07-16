@@ -68,7 +68,7 @@ const JuzProgressDashboard = ({ initialData = null, santriId }) => {
     setRefreshing(true);
     fetchData();
   };
-
+  console.log("Data state:", data);
   // Loading State
   if (loading) {
     return (
@@ -175,7 +175,7 @@ const JuzProgressDashboard = ({ initialData = null, santriId }) => {
             <div className="flex flex-col items-end gap-3">
               <div className="text-right">
                 <div className="text-5xl font-bold text-emerald-600">
-                  {data.progress?.juzSelesai || 0}
+                  {data.summary?.juzSelesai || 0}
                 </div>
                 <div className="text-sm text-gray-600">Juz Selesai</div>
               </div>
@@ -199,18 +199,18 @@ const JuzProgressDashboard = ({ initialData = null, santriId }) => {
                 Progress Keseluruhan
               </span>
               <span className="font-bold text-emerald-600">
-                {data.progress?.persenTotal || 0}%
+                {data.summary?.persenTotal || 0}%
               </span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-4 overflow-hidden">
               <div
                 className="bg-gradient-to-r from-emerald-500 to-teal-500 h-full rounded-full transition-all duration-500"
-                style={{ width: `${data.progress?.persenTotal || 0}%` }}
+                style={{ width: `${data.summary?.persenTotal || 0}%` }}
               ></div>
             </div>
             <div className="flex justify-between text-xs text-gray-600 mt-2">
-              <span>{data.progress?.totalHalaman || 0} halaman</span>
-              <span>{data.progress?.dariTotalHalaman || 604} halaman</span>
+              <span>{data.summary?.totalHalaman || 0} halaman</span>
+              <span>{data.summary?.dariTotalHalaman || 604} halaman</span>
             </div>
           </div>
         </div>
@@ -244,7 +244,7 @@ const JuzProgressDashboard = ({ initialData = null, santriId }) => {
           <div className="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl shadow-lg p-6 text-white">
             <TrendingUp className="w-8 h-8 mb-3 opacity-80" />
             <div className="text-3xl font-bold mb-1">
-              {Math.round(data.progress?.persenTotal || 0)}%
+              {Math.round(data.summary?.persenTotal || 0)}%
             </div>
             <div className="text-sm opacity-90">Total Progress</div>
           </div>
@@ -264,7 +264,7 @@ const JuzProgressDashboard = ({ initialData = null, santriId }) => {
                 <span className="text-gray-600">Tanggal:</span>
                 <p className="font-semibold text-gray-800">
                   {new Date(data.hafalanTerakhir.tanggal).toLocaleDateString(
-                    "id-ID"
+                    "id-ID",
                   )}
                 </p>
               </div>
@@ -284,7 +284,13 @@ const JuzProgressDashboard = ({ initialData = null, santriId }) => {
               <div>
                 <span className="text-gray-600">Halaman:</span>
                 <p className="font-semibold text-gray-800">
-                  {data.hafalanTerakhir.halaman}
+                  {data.hafalanTerakhir.halaman_awal ??
+                    data.hafalanTerakhir.halaman}
+                  {data.hafalanTerakhir.halaman_akhir &&
+                  data.hafalanTerakhir.halaman_akhir !==
+                    data.hafalanTerakhir.halaman_awal
+                    ? ` - ${data.hafalanTerakhir.halaman_akhir}`
+                    : ""}
                 </p>
               </div>
             </div>
@@ -312,8 +318,8 @@ const JuzProgressDashboard = ({ initialData = null, santriId }) => {
                     juz.status === "SELESAI"
                       ? "bg-green-50 border-green-300 hover:shadow-lg hover:shadow-green-200"
                       : juz.status === "PROSES"
-                      ? "bg-yellow-50 border-yellow-300 hover:shadow-lg hover:shadow-yellow-200"
-                      : "bg-gray-50 border-gray-200 hover:shadow-lg"
+                        ? "bg-yellow-50 border-yellow-300 hover:shadow-lg hover:shadow-yellow-200"
+                        : "bg-gray-50 border-gray-200 hover:shadow-lg"
                   }`}
                 >
                   {/* Badge Status */}
@@ -327,8 +333,8 @@ const JuzProgressDashboard = ({ initialData = null, santriId }) => {
                       juz.status === "SELESAI"
                         ? "text-green-600"
                         : juz.status === "PROSES"
-                        ? "text-yellow-600"
-                        : "text-gray-400"
+                          ? "text-yellow-600"
+                          : "text-gray-400"
                     }`}
                   >
                     {juz.juz}
@@ -338,7 +344,7 @@ const JuzProgressDashboard = ({ initialData = null, santriId }) => {
                   <div className="w-full bg-gray-200 rounded-full h-2 mb-2">
                     <div
                       className={`h-full rounded-full transition-all duration-500 ${getStatusColor(
-                        juz.status
+                        juz.status,
                       )}`}
                       style={{ width: `${juz.percentage || 0}%` }}
                     ></div>

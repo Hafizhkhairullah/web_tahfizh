@@ -50,7 +50,7 @@ export async function GET(request, { params }) {
           {
             status: 403,
             headers: { "Content-Type": "application/json" },
-          }
+          },
         );
       }
     } else if (session.user.role === "WALISANTRI") {
@@ -64,7 +64,7 @@ export async function GET(request, { params }) {
           {
             status: 403,
             headers: { "Content-Type": "application/json" },
-          }
+          },
         );
       }
     }
@@ -83,7 +83,7 @@ export async function GET(request, { params }) {
       {
         status: 500,
         headers: { "Content-Type": "application/json" },
-      }
+      },
     );
   }
 }
@@ -110,7 +110,7 @@ export async function PUT(request, { params }) {
         {
           status: 404,
           headers: { "Content-Type": "application/json" },
-        }
+        },
       );
     }
 
@@ -127,7 +127,7 @@ export async function PUT(request, { params }) {
         {
           status: 404,
           headers: { "Content-Type": "application/json" },
-        }
+        },
       );
     }
 
@@ -138,7 +138,7 @@ export async function PUT(request, { params }) {
         {
           status: 403,
           headers: { "Content-Type": "application/json" },
-        }
+        },
       );
     }
 
@@ -163,8 +163,25 @@ export async function PUT(request, { params }) {
         {
           status: 400,
           headers: { "Content-Type": "application/json" },
-        }
+        },
       );
+    }
+
+    // ============================
+    // PERBAIKAN HALAMAN
+    // ============================
+    let validatedHalamanAwal = halaman_awal;
+    let validatedHalamanAkhir = halaman_akhir;
+
+    if (!validatedHalamanAkhir || validatedHalamanAkhir === "") {
+      validatedHalamanAkhir = validatedHalamanAwal;
+    }
+
+    if (Number(validatedHalamanAkhir) < Number(validatedHalamanAwal)) {
+      [validatedHalamanAwal, validatedHalamanAkhir] = [
+        validatedHalamanAkhir,
+        validatedHalamanAwal,
+      ];
     }
 
     // Gunakan transaction untuk memastikan history tersimpan
@@ -197,8 +214,12 @@ export async function PUT(request, { params }) {
           jenis,
           ayat_mulai: ayat_mulai ? Number(ayat_mulai) : null,
           ayat_selesai: ayat_selesai ? Number(ayat_selesai) : null,
-          halaman_awal: halaman_awal ? Number(halaman_awal) : null,
-          halaman_akhir: halaman_akhir ? Number(halaman_akhir) : null,
+          halaman_awal: validatedHalamanAwal
+            ? Number(validatedHalamanAwal)
+            : null,
+          halaman_akhir: validatedHalamanAkhir
+            ? Number(validatedHalamanAkhir)
+            : null,
           juz: juz ? Number(juz) : null,
           status,
           catatan: catatan || null,
@@ -238,7 +259,7 @@ export async function PUT(request, { params }) {
       {
         status: 500,
         headers: { "Content-Type": "application/json" },
-      }
+      },
     );
   }
 }
@@ -264,7 +285,7 @@ export async function DELETE(request, { params }) {
         {
           status: 404,
           headers: { "Content-Type": "application/json" },
-        }
+        },
       );
     }
 
@@ -286,7 +307,7 @@ export async function DELETE(request, { params }) {
         {
           status: 403,
           headers: { "Content-Type": "application/json" },
-        }
+        },
       );
     }
 
@@ -303,7 +324,7 @@ export async function DELETE(request, { params }) {
       {
         status: 200,
         headers: { "Content-Type": "application/json" },
-      }
+      },
     );
   } catch (error) {
     console.error("Error deleting hafalan:", error);
@@ -315,7 +336,7 @@ export async function DELETE(request, { params }) {
       {
         status: 500,
         headers: { "Content-Type": "application/json" },
-      }
+      },
     );
   }
 }

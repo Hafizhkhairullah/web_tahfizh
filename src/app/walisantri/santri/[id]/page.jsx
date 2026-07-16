@@ -249,7 +249,7 @@ export default function DetailSantriPage() {
                 <div className="flex items-center gap-2">
                   <TrendingUp className="w-4 h-4" />
                   <span>
-                    Progress: {santri.juzSelesai}/30 Juz (
+                    Progress: {santri.juzSelesai}/5 Juz (
                     {santri.persenTotal.toFixed(1)}%)
                   </span>
                 </div>

@@ -135,7 +135,7 @@ function generateSummaryReport(doc, stats, startY) {
     startY: boxY + 65,
     head: [["Keterangan", "Jumlah"]],
     body: [
-      ["Santri Khatam (30 Juz)", stats.santriKhatam],
+      ["Santri Khatam (5 Juz)", stats.santriKhatam],
       ["Santri Sedang Progress", stats.santriProgress],
       ["Total Halaman Dihafal", stats.totalHalamanDihafal],
       [
@@ -163,7 +163,7 @@ function generateDetailReport(doc, santri, startY) {
       s.nama,
       s.kelas,
       s.guru,
-      `${s.juzSelesai}/30`,
+      `${s.juzSelesai}/5`,
       `${s.persenTotal}%`,
       s.totalHalaman,
     ]),
@@ -224,7 +224,7 @@ function generateProgressReport(doc, stats, startY) {
       [
         "Persentase Progress Keseluruhan",
         `${(
-          (stats.totalJuzDiselesaikan / (stats.totalSantri * 30)) *
+          (stats.totalJuzDiselesaikan / (stats.totalSantri * 5)) *
           100
         ).toFixed(1)}%`,
       ],
@@ -246,7 +246,7 @@ function generateAchievementReport(doc, stats, startY) {
       i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : `${i + 1}`,
       s.nama,
       s.kelas,
-      `${s.juzSelesai}/30`,
+      `${s.juzSelesai}/5`,
       `${s.persenTotal}%`,
     ]),
     theme: "grid",
@@ -279,6 +279,6 @@ function generateAchievementReport(doc, stats, startY) {
     "🏆 Selamat kepada santri berprestasi! Terus semangat menghafal Al-Qur'an",
     105,
     finalY,
-    { align: "center" }
+    { align: "center" },
   );
 }

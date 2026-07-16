@@ -74,13 +74,13 @@ function ChildProgressCard({ child }) {
         <div className="flex justify-between text-sm mb-2">
           <span className="text-gray-600">Progress Hafalan</span>
           <span className="font-semibold text-emerald-600">
-            {child.juzSelesai}/30 Juz
+            {child.juzSelesai}/5 Juz
           </span>
         </div>
         <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
           <div
             className="bg-gradient-to-r from-emerald-500 to-teal-600 h-3 rounded-full transition-all duration-500"
-            style={{ width: `${(child.juzSelesai / 30) * 100}%` }}
+            style={{ width: `${(child.juzSelesai / 5) * 100}%` }}
           />
         </div>
         <div className="flex justify-between mt-2">
@@ -292,7 +292,7 @@ export default function WalisantriDashboard() {
           <StatCard
             icon={<Award className="w-6 h-6" />}
             title="Prestasi Tertinggi"
-            value={`${data.statistics.maxJuz}/30`}
+            value={`${data.statistics.maxJuz}/5`}
             subtitle={data.statistics.topSantri || "Belum ada data"}
             color="green"
           />

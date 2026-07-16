@@ -44,7 +44,7 @@ export default function HistoryHafalanClient({ hafalan, history, pagination }) {
         }`}
       >
         ←
-      </button>
+      </button>,
     );
 
     // First page
@@ -56,13 +56,13 @@ export default function HistoryHafalanClient({ hafalan, history, pagination }) {
           className="px-4 py-2 rounded-lg font-medium bg-white text-gray-700 hover:bg-purple-50 hover:text-purple-600 border transition-colors"
         >
           1
-        </button>
+        </button>,
       );
       if (startPage > 2) {
         pages.push(
           <span key="dots1" className="px-2 text-gray-400">
             ...
-          </span>
+          </span>,
         );
       }
     }
@@ -80,7 +80,7 @@ export default function HistoryHafalanClient({ hafalan, history, pagination }) {
           }`}
         >
           {i}
-        </button>
+        </button>,
       );
     }
 
@@ -90,7 +90,7 @@ export default function HistoryHafalanClient({ hafalan, history, pagination }) {
         pages.push(
           <span key="dots2" className="px-2 text-gray-400">
             ...
-          </span>
+          </span>,
         );
       }
       pages.push(
@@ -100,7 +100,7 @@ export default function HistoryHafalanClient({ hafalan, history, pagination }) {
           className="px-4 py-2 rounded-lg font-medium bg-white text-gray-700 hover:bg-purple-50 hover:text-purple-600 border transition-colors"
         >
           {pagination.totalPages}
-        </button>
+        </button>,
       );
     }
 
@@ -117,7 +117,7 @@ export default function HistoryHafalanClient({ hafalan, history, pagination }) {
         }`}
       >
         →
-      </button>
+      </button>,
     );
 
     return pages;
@@ -243,19 +243,23 @@ export default function HistoryHafalanClient({ hafalan, history, pagination }) {
                 hafalan.status === "LULUS"
                   ? "bg-green-100 text-green-800"
                   : hafalan.status === "MENGULANG"
-                  ? "bg-yellow-100 text-yellow-800"
-                  : "bg-gray-100 text-gray-800"
+                    ? "bg-yellow-100 text-yellow-800"
+                    : "bg-gray-100 text-gray-800"
               }`}
             >
               {hafalan.status}
             </span>
           </div>
 
-          {hafalan.halaman && (
+          {(hafalan.halaman_awal || hafalan.halaman) && (
             <div className="bg-gray-50 p-4 rounded-xl border">
               <div className="text-xs text-gray-500 mb-1">Halaman</div>
               <div className="font-semibold text-gray-800">
-                {hafalan.halaman}
+                {hafalan.halaman_awal ?? hafalan.halaman}
+                {hafalan.halaman_akhir &&
+                hafalan.halaman_akhir !== hafalan.halaman_awal
+                  ? ` - ${hafalan.halaman_akhir}`
+                  : ""}
               </div>
             </div>
           )}
@@ -404,21 +408,25 @@ export default function HistoryHafalanClient({ hafalan, history, pagination }) {
                             item.status === "LULUS"
                               ? "bg-green-100 text-green-800"
                               : item.status === "MENGULANG"
-                              ? "bg-yellow-100 text-yellow-800"
-                              : "bg-gray-100 text-gray-800"
+                                ? "bg-yellow-100 text-yellow-800"
+                                : "bg-gray-100 text-gray-800"
                           }`}
                         >
                           {item.status}
                         </span>
                       </div>
 
-                      {item.halaman && (
+                      {(item.halaman_awal || item.halaman) && (
                         <div className="bg-white p-3 rounded-lg border">
                           <div className="text-xs text-gray-500 mb-1">
                             Halaman
                           </div>
                           <div className="text-sm font-medium text-gray-800">
-                            {item.halaman}
+                            {item.halaman_awal ?? item.halaman}
+                            {item.halaman_akhir &&
+                            item.halaman_akhir !== item.halaman_awal
+                              ? ` - ${item.halaman_akhir}`
+                              : ""}
                           </div>
                         </div>
                       )}
@@ -447,7 +455,7 @@ export default function HistoryHafalanClient({ hafalan, history, pagination }) {
                   -{" "}
                   {Math.min(
                     currentPage * pagination.itemsPerPage,
-                    pagination.totalItems
+                    pagination.totalItems,
                   )}{" "}
                   dari {pagination.totalItems} data
                 </div>

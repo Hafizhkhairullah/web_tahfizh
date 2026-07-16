@@ -5,8 +5,7 @@ import { useRouter } from "next/navigation";
 import HafalanTable from "../TabelComponents/hafalanTable";
 import Pagination from "../TabelComponents/Pagination";
 // Add custom CSS for animations
-const style = document.createElement("style");
-style.textContent = `
+const animationStyles = `
   @keyframes slideInRight {
     from {
       transform: translateX(100%);
@@ -35,7 +34,6 @@ style.textContent = `
     animation: progressBar 4s linear;
   }
 `;
-document.head.appendChild(style);
 
 export default function TambahHafalanForm({ santriList }) {
   const router = useRouter();
@@ -51,6 +49,16 @@ export default function TambahHafalanForm({ santriList }) {
     hasNextPage: false,
     hasPreviousPage: false,
   });
+
+  // Inject styles on mount
+  useEffect(() => {
+    const style = document.createElement("style");
+    style.textContent = animationStyles;
+    document.head.appendChild(style);
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
 
   // Search & Filter State
   const [search, setSearch] = useState("");
@@ -81,123 +89,71 @@ export default function TambahHafalanForm({ santriList }) {
     message: "",
   });
 
-  // Daftar Surah Al-Qur'an
-  const surahList = [
-    "Al-Fatihah",
-    "Al-Baqarah",
-    "Ali 'Imran",
-    "An-Nisa",
-    "Al-Ma'idah",
-    "Al-An'am",
-    "Al-A'raf",
-    "Al-Anfal",
-    "At-Taubah",
-    "Yunus",
-    "Hud",
-    "Yusuf",
-    "Ar-Ra'd",
-    "Ibrahim",
-    "Al-Hijr",
-    "An-Nahl",
-    "Al-Isra",
-    "Al-Kahf",
-    "Maryam",
-    "Taha",
-    "Al-Anbiya",
-    "Al-Hajj",
-    "Al-Mu'minun",
-    "An-Nur",
-    "Al-Furqan",
-    "Ash-Shu'ara",
-    "An-Naml",
-    "Al-Qasas",
-    "Al-'Ankabut",
-    "Ar-Rum",
-    "Luqman",
-    "As-Sajdah",
-    "Al-Ahzab",
-    "Saba",
-    "Fatir",
-    "Ya-Sin",
-    "As-Saffat",
-    "Sad",
-    "Az-Zumar",
-    "Ghafir",
-    "Fussilat",
-    "Ash-Shura",
-    "Az-Zukhruf",
-    "Ad-Dukhan",
-    "Al-Jathiyah",
-    "Al-Ahqaf",
-    "Muhammad",
-    "Al-Fath",
-    "Al-Hujurat",
-    "Qaf",
-    "Adh-Dhariyat",
-    "At-Tur",
-    "An-Najm",
-    "Al-Qamar",
-    "Ar-Rahman",
-    "Al-Waqi'ah",
-    "Al-Hadid",
-    "Al-Mujadila",
-    "Al-Hashr",
-    "Al-Mumtahanah",
-    "As-Saff",
-    "Al-Jumu'ah",
-    "Al-Munafiqun",
-    "At-Taghabun",
-    "At-Talaq",
-    "At-Tahrim",
-    "Al-Mulk",
-    "Al-Qalam",
-    "Al-Haqqah",
-    "Al-Ma'arij",
-    "Nuh",
-    "Al-Jinn",
-    "Al-Muzzammil",
-    "Al-Muddaththir",
-    "Al-Qiyamah",
-    "Al-Insan",
-    "Al-Mursalat",
-    "An-Naba",
-    "An-Nazi'at",
-    "Abasa",
-    "At-Takwir",
-    "Al-Infitar",
-    "Al-Mutaffifin",
-    "Al-Inshiqaq",
-    "Al-Buruj",
-    "At-Tariq",
-    "Al-A'la",
-    "Al-Ghashiyah",
-    "Al-Fajr",
-    "Al-Balad",
-    "Ash-Shams",
-    "Al-Lail",
-    "Ad-Duha",
-    "Ash-Sharh",
-    "At-Tin",
-    "Al-'Alaq",
-    "Al-Qadr",
-    "Al-Bayyinah",
-    "Az-Zalzalah",
-    "Al-'Adiyat",
-    "Al-Qari'ah",
-    "At-Takathur",
-    "Al-'Asr",
-    "Al-Humazah",
-    "Al-Fil",
-    "Quraish",
-    "Al-Ma'un",
-    "Al-Kawthar",
-    "Al-Kafirun",
-    "An-Nasr",
-    "Al-Masad",
-    "Al-Ikhlas",
-    "Al-Falaq",
-    "An-Nas",
-  ];
+  // Mapping nama surah ke nomor surah
+  const surahNumberMap = {
+    "Al-Fatihah": 1,
+    "Al-Baqarah": 2,
+    "Al-Mujadilah": 58,
+    "Al-Hashr": 59,
+    "Al-Mumtahanah": 60,
+    "As-Saff": 61,
+    "Al-Jumu'ah": 62,
+    "Al-Munafiqun": 63,
+    "At-Taghabun": 64,
+    "At-Talaq": 65,
+    "At-Tahrim": 66,
+    "Al-Mulk": 67,
+    "Al-Qalam": 68,
+    "Al-Haqqah": 69,
+    "Al-Ma'arij": 70,
+    Nuh: 71,
+    "Al-Jinn": 72,
+    "Al-Muzzammil": 73,
+    "Al-Muddaththir": 74,
+    "Al-Qiyamah": 75,
+    "Al-Insan": 76,
+    "Al-Mursalat": 77,
+    "An-Naba'": 78,
+    "An-Nazi'at": 79,
+    Abasa: 80,
+    "At-Takwir": 81,
+    "Al-Infitar": 82,
+    "Al-Mutaffifin": 83,
+    "Al-Inshiqaq": 84,
+    "Al-Buruj": 85,
+    "At-Tariq": 86,
+    "Al-A'la": 87,
+    "Al-Ghashiyah": 88,
+    "Al-Fajr": 89,
+    "Al-Balad": 90,
+    "Ash-Shams": 91,
+    "Al-Lail": 92,
+    "Ad-Duha": 93,
+    "Ash-Sharh": 94,
+    "At-Tin": 95,
+    "Al-'Alaq": 96,
+    "Al-Qadr": 97,
+    "Al-Bayyinah": 98,
+    "Az-Zalzalah": 99,
+    "Al-'Adiyat": 100,
+    "Al-Qari'ah": 101,
+    "At-Takathur": 102,
+    "Al-'Asr": 103,
+    "Al-Humazah": 104,
+    "Al-Fil": 105,
+    Quraish: 106,
+    "Al-Ma'un": 107,
+    "Al-Kawthar": 108,
+    "Al-Kafirun": 109,
+    "An-Nasr": 110,
+    "Al-Masad": 111,
+    "Al-Ikhlas": 112,
+    "Al-Falaq": 113,
+    "An-Nas": 114,
+  };
+
+  // Daftar Surah Al-Qur'an yang ada di Juz 1,2,28,29,30
+  const surahList = Object.keys(surahNumberMap);
 
   const showAlert = (type, title, message) => {
     setAlert({ show: true, type, title, message });
@@ -268,6 +224,7 @@ export default function TambahHafalanForm({ santriList }) {
           halaman_akhir: newHafalan.halaman_akhir
             ? Number(newHafalan.halaman_akhir)
             : null,
+          surah_number: surahNumberMap[newHafalan.surah],
         }),
       });
 
@@ -364,7 +321,13 @@ export default function TambahHafalanForm({ santriList }) {
           santri_id: Number(editData.santri_id),
           ayat_mulai: Number(editData.ayat_mulai),
           ayat_selesai: Number(editData.ayat_selesai),
-          halaman: editData.halaman ? Number(editData.halaman) : null,
+          halaman_awal: editData.halaman_awal
+            ? Number(editData.halaman_awal)
+            : null,
+          halaman_akhir: editData.halaman_akhir
+            ? Number(editData.halaman_akhir)
+            : null,
+          surah_number: surahNumberMap[editData.surah],
         }),
       });
 

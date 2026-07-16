@@ -326,20 +326,20 @@ const SantriJuzSummary = ({ initialData, role, userId }) => {
                         <div className="flex items-center justify-center gap-2">
                           <span
                             className={`text-2xl font-bold ${
-                              santri.juzSelesai === 30
+                              santri.juzSelesai === 5
                                 ? "text-green-600"
-                                : santri.juzSelesai >= 15
+                                : santri.juzSelesai >= 3
                                   ? "text-blue-600"
-                                  : santri.juzSelesai >= 5
+                                  : santri.juzSelesai >= 1
                                     ? "text-yellow-600"
                                     : "text-gray-600"
                             }`}
                           >
                             {santri.juzSelesai}
                           </span>
-                          <span className="text-sm text-gray-500">/30</span>
+                          <span className="text-sm text-gray-500">/5</span>
                         </div>
-                        {santri.juzSelesai === 30 && (
+                        {santri.juzSelesai === 5 && (
                           <Trophy className="w-5 h-5 text-yellow-500 mx-auto mt-1" />
                         )}
                       </td>

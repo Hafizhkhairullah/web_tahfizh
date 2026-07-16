@@ -161,7 +161,7 @@ const DashboardHafalan = ({ role, userId }) => {
             <div className="flex items-center justify-between text-sm">
               <span className="text-gray-600">Per santri</span>
               <span className="font-semibold text-purple-600">
-                {((stats.rataRataJuz / 30) * 100).toFixed(0)}% progress
+                {((stats.rataRataJuz / 5) * 100).toFixed(0)}% progress
               </span>
             </div>
           </div>
@@ -228,7 +228,7 @@ const DashboardHafalan = ({ role, userId }) => {
                     </div>
                     <div className="text-right">
                       <p className="text-lg font-bold text-emerald-600">
-                        {santri.juzSelesai}/30
+                        {santri.juzSelesai}/5
                       </p>
                       <p className="text-xs text-gray-500">
                         {santri.persenTotal}%
@@ -326,7 +326,7 @@ const DashboardHafalan = ({ role, userId }) => {
                     <div className="flex justify-between text-sm">
                       <span className="text-gray-600">Juz Selesai:</span>
                       <span className="font-semibold">
-                        {santri.juzSelesai}/30
+                        {santri.juzSelesai}/5
                       </span>
                     </div>
                     <div className="w-full bg-gray-200 rounded-full h-2">

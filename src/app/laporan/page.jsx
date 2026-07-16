@@ -377,7 +377,7 @@ const LaporanPDF = ({ role, userId }) => {
                       </td>
                       <td className="py-3 px-4 text-sm">{santri.kelas}</td>
                       <td className="py-3 px-4 text-sm text-center font-semibold">
-                        {santri.juzSelesai}/30
+                        {santri.juzSelesai}/5
                       </td>
                       <td className="py-3 px-4 text-sm text-center">
                         <span className="font-semibold text-emerald-600">
@@ -402,7 +402,7 @@ const LaporanPDF = ({ role, userId }) => {
                   <div>
                     <div className="flex justify-between mb-1">
                       <span className="text-sm text-gray-600">
-                        Khatam (30 Juz)
+                        Khatam (5 Juz)
                       </span>
                       <span className="text-sm font-semibold">
                         {stats.santriKhatam} santri
