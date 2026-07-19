@@ -358,15 +358,6 @@ export default function WalisantriDashboard() {
                 <h3 className="font-bold mb-1">Riwayat Lengkap</h3>
                 <p className="text-sm opacity-90">Lihat semua hafalan anak</p>
               </button>
-
-              <button
-                onClick={() => router.push("/walisantri/laporan")}
-                className="p-6 bg-gradient-to-br from-purple-500 to-pink-600 text-white rounded-xl hover:shadow-xl transition-all transform hover:-translate-y-1 text-left"
-              >
-                <FileText className="w-8 h-8 mb-2" />
-                <h3 className="font-bold mb-1">Cetak Laporan</h3>
-                <p className="text-sm opacity-90">Download progress anak</p>
-              </button>
             </div>
           </div>
         </div>
