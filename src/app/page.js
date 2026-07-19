@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { useSession } from "next-auth/react";
 import {
   Users,
   BookOpen,
@@ -22,6 +23,8 @@ import {
 import { useRouter } from "next/navigation";
 
 const DashboardHafalan = ({ role, userId }) => {
+  const { data: session } = useSession();
+  role = role || session?.user?.role;
   const router = useRouter();
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -358,24 +361,29 @@ const DashboardHafalan = ({ role, userId }) => {
 
         {/* Quick Actions */}
         <div className="flex flex-wrap gap-4 mt-8">
-          <button
-            onClick={() => router.push("/santri/juz-summary")}
-            className="flex-1 min-w-[280px] p-6 bg-gradient-to-br from-emerald-500 to-teal-600 text-white rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1"
-          >
-            <BarChart3 className="w-8 h-8 mb-3" />
-            <h3 className="text-lg font-bold mb-2">Lihat Semua Siswa/i</h3>
-            <p className="text-sm opacity-90">Detail progress setiap siswa/i</p>
-          </button>
-
           {role === "GURU" && (
-            <button
-              onClick={() => router.push("/guru/dashboard")}
-              className="flex-1 min-w-[280px] p-6 bg-gradient-to-br from-blue-500 to-cyan-600 text-white rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1"
-            >
-              <BookOpen className="w-8 h-8 mb-3" />
-              <h3 className="text-lg font-bold mb-2">Input Hafalan</h3>
-              <p className="text-sm opacity-90">Tambah hafalan siswa/i baru</p>
-            </button>
+            <>
+              <button
+                onClick={() => router.push("/santri")}
+                className="flex-1 min-w-[280px] p-6 bg-gradient-to-br from-emerald-500 to-teal-600 text-white rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1"
+              >
+                <BarChart3 className="w-8 h-8 mb-3" />
+                <h3 className="text-lg font-bold mb-2">Lihat Semua Siswa/i</h3>
+                <p className="text-sm opacity-90">
+                  Detail progress setiap siswa/i
+                </p>
+              </button>
+              <button
+                onClick={() => router.push("/guru/dashboard")}
+                className="flex-1 min-w-[280px] p-6 bg-gradient-to-br from-blue-500 to-cyan-600 text-white rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1"
+              >
+                <BookOpen className="w-8 h-8 mb-3" />
+                <h3 className="text-lg font-bold mb-2">Input Hafalan</h3>
+                <p className="text-sm opacity-90">
+                  Tambah hafalan siswa/i baru
+                </p>
+              </button>
+            </>
           )}
 
           <button
