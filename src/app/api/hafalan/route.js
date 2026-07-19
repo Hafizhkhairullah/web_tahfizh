@@ -285,6 +285,7 @@ export async function POST(request) {
       halaman_akhir,
       tanggal,
       jenis,
+      juz,
     } = body;
 
     // ============================
@@ -349,6 +350,7 @@ export async function POST(request) {
         halaman_akhir: Number(halaman_akhir),
         guru_id: Number(guru_id),
         catatan: catatan || null,
+        juz: juz ? Number(juz) : null,
       },
       include: {
         santri: { select: { id: true, nama: true, kelas: true } },

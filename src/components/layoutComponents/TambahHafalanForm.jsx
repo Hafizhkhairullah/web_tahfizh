@@ -77,6 +77,7 @@ export default function TambahHafalanForm({ santriList }) {
     halaman: "",
     catatan: "",
     status: "LULUS",
+    juz: "", // Default Juz
   });
 
   const [editData, setEditData] = useState({});
@@ -209,6 +210,16 @@ export default function TambahHafalanForm({ santriList }) {
 
   const handleAddNew = async () => {
     setLoading(true);
+    if (newHafalan.juz == "") {
+      showAlert(
+        "warning",
+        "Juz Tidak Valid",
+        "Juz harus di isi! Mohon pilih Juz yang sesuai.",
+      );
+      setLoading(false);
+      return;
+    }
+
     try {
       const response = await fetch("/api/hafalan", {
         method: "POST",
@@ -225,6 +236,7 @@ export default function TambahHafalanForm({ santriList }) {
             ? Number(newHafalan.halaman_akhir)
             : null,
           surah_number: surahNumberMap[newHafalan.surah],
+          juz: newHafalan.juz,
         }),
       });
 
@@ -240,6 +252,7 @@ export default function TambahHafalanForm({ santriList }) {
           halaman: "",
           catatan: "",
           status: "LULUS",
+          juz: "",
         });
         setIsAdding(false);
         fetchHafalan();
@@ -276,7 +289,7 @@ export default function TambahHafalanForm({ santriList }) {
       halaman_akhir: h.halaman_akhir || "",
       catatan: h.catatan || "",
       status: h.status,
-      juz: h.juz,
+      juz: h.juz || "",
     });
   };
 
@@ -327,6 +340,7 @@ export default function TambahHafalanForm({ santriList }) {
           halaman_akhir: editData.halaman_akhir
             ? Number(editData.halaman_akhir)
             : null,
+          juz: editData.juz || null,
           surah_number: surahNumberMap[editData.surah],
         }),
       });
@@ -970,6 +984,33 @@ export default function TambahHafalanForm({ santriList }) {
                 <option value="LULUS">Lulus</option>
                 <option value="MENGULANG">Mengulang</option>
               </select>
+            </div>
+            <div className="space-y-1">
+              <label className="text-xs font-semibold text-gray-700 flex items-center gap-1">
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 14l9-5-9-5-9 5 9 5z"
+                  />
+                </svg>
+                Juz *
+              </label>
+              <input
+                type="number"
+                placeholder="1"
+                value={newHafalan.juz || ""}
+                onChange={(e) =>
+                  setNewHafalan({ ...newHafalan, juz: e.target.value })
+                }
+                className="w-full border-2 border-gray-300 px-3 py-2.5 rounded-xl text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none bg-white placeholder-gray-400"
+              />
             </div>
 
             <div className="space-y-1 md:col-span-2 lg:col-span-4">
