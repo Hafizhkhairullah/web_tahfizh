@@ -383,17 +383,17 @@ const DashboardHafalan = ({ role, userId }) => {
                   Tambah hafalan siswa/i baru
                 </p>
               </button>
+
+              <button
+                onClick={() => router.push("/laporan")}
+                className="flex-1 min-w-[280px] p-6 bg-gradient-to-br from-purple-500 to-pink-600 text-white rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1"
+              >
+                <Target className="w-8 h-8 mb-3" />
+                <h3 className="text-lg font-bold mb-2">Laporan</h3>
+                <p className="text-sm opacity-90">Cetak & export laporan</p>
+              </button>
             </>
           )}
-
-          <button
-            onClick={() => router.push("/laporan")}
-            className="flex-1 min-w-[280px] p-6 bg-gradient-to-br from-purple-500 to-pink-600 text-white rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1"
-          >
-            <Target className="w-8 h-8 mb-3" />
-            <h3 className="text-lg font-bold mb-2">Laporan</h3>
-            <p className="text-sm opacity-90">Cetak & export laporan</p>
-          </button>
         </div>
       </div>
     </div>

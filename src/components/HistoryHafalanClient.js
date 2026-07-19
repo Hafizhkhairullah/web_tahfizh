@@ -199,7 +199,7 @@ export default function HistoryHafalanClient({ hafalan, history, pagination }) {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <div className="bg-gray-50 p-4 rounded-xl border">
-            <div className="text-xs text-gray-500 mb-1">Santri</div>
+            <div className="text-xs text-gray-500 mb-1">Siswa/i</div>
             <div className="font-semibold text-gray-800">
               {hafalan.santri.nama}
             </div>

@@ -47,15 +47,15 @@ export default async function SantriListPage() {
                   <Users className="h-5 w-5" />
                 </div>
                 <h1 className="text-3xl font-bold text-gray-800">
-                  Daftar Santri
+                  Daftar Siswa/i
                 </h1>
               </div>
               <p className="text-gray-600">
-                Santri yang terhubung dengan akun guru Anda.
+                Siswa/i yang terhubung dengan akun guru Anda.
               </p>
             </div>
             <div className="rounded-xl bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-700">
-              {santriList.length} santri terdaftar
+              {santriList.length} siswa/i terdaftar
             </div>
           </div>
         </div>
@@ -64,7 +64,7 @@ export default async function SantriListPage() {
           <div className="rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 p-6 text-white shadow-lg">
             <Users className="mb-3 h-8 w-8 opacity-80" />
             <div className="text-3xl font-bold">{santriList.length}</div>
-            <div className="text-sm opacity-90">Total Santri</div>
+            <div className="text-sm opacity-90">Total Siswa/i</div>
           </div>
 
           <div className="rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600 p-6 text-white shadow-lg">
@@ -76,7 +76,7 @@ export default async function SantriListPage() {
           <div className="rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 p-6 text-white shadow-lg">
             <UserCheck className="mb-3 h-8 w-8 opacity-80" />
             <div className="text-3xl font-bold">{waliCount}</div>
-            <div className="text-sm opacity-90">Wali Santri Terdaftar</div>
+            <div className="text-sm opacity-90">Wali Siswa/i Terdaftar</div>
           </div>
         </div>
 
@@ -84,7 +84,7 @@ export default async function SantriListPage() {
           <div className="border-b border-gray-200 bg-gradient-to-r from-emerald-600 to-teal-600 px-6 py-4">
             <div className="flex items-center gap-2 text-white">
               <BookOpen className="h-5 w-5" />
-              <h2 className="text-lg font-semibold">Data Santri</h2>
+              <h2 className="text-lg font-semibold">Data Siswa/i</h2>
             </div>
           </div>
 
@@ -100,7 +100,7 @@ export default async function SantriListPage() {
                       Kelas
                     </th>
                     <th className="px-6 py-4 text-left text-sm font-semibold uppercase tracking-wider text-gray-600">
-                      Wali Santri
+                      Wali Siswa/i
                     </th>
                     <th className="px-6 py-4 text-left text-sm font-semibold uppercase tracking-wider text-gray-600">
                       Status
@@ -139,7 +139,7 @@ export default async function SantriListPage() {
           ) : (
             <div className="px-6 py-12 text-center text-gray-500">
               <BookOpen className="mx-auto mb-3 h-12 w-12 text-gray-400" />
-              <p>Belum ada santri yang terhubung dengan guru ini.</p>
+              <p>Belum ada siswa/i yang terhubung dengan guru ini.</p>
             </div>
           )}
         </div>
